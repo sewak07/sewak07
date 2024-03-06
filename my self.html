@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>my self</title>
+</head>
+<style>
+    body {
+
+      font-family: sans-serif;
+      background-color:black;
+      color:antiquewhite;
+      
+}
+
+    article {
+  --img-scale: 1.001;
+  --title-color: black;
+  --link-icon-translate: -20px;
+  --link-icon-opacity: 0;
+  position: relative;
+  border-radius: 16px;
+  box-shadow: none;
+  background: #fff;
+  transform-origin: center;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+  color:black;
+}
+
+article a::after {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: 0;
+  cursor: pointer;
+  content: "";
+}
+
+/* basic article elements styling */
+article h2 {
+  margin: 0 0 18px 0;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.9rem;
+  letter-spacing: 0.06em;
+  color: var(--title-color);
+  transition: color 0.3s ease-out;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+article img {
+  max-width: 100%;
+  transform-origin: center;
+  transform: scale(var(--img-scale));
+  transition: transform 0.4s ease-in-out;
+}
+
+.article-body {
+  padding: 24px;
+}
+
+article a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #28666e;
+}
+
+article a:focus {
+  outline: 1px dotted #28666e;
+}
+
+article a .icon {
+  min-width: 24px;
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+  transform: translateX(var(--link-icon-translate));
+  opacity: var(--link-icon-opacity);
+  transition: all 0.3s;
+}
+
+/* using the has() relational pseudo selector to update our custom properties */
+article:has(:hover, :focus) {
+  --img-scale: 1.1;
+  --title-color: #28666e;
+  --link-icon-translate: 0;
+  --link-icon-opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+
+/************************ 
+Generic layout (demo looks)
+**************************/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+.articles {
+  display: grid;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+@media screen and (max-width: 960px) {
+  article {
+    container: card/inline-size;
+  }
+  .article-body p {
+    display: none;
+  }
+}
+
+@container card (min-width: 380px) {
+  .article-wrapper {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+  }
+  .article-body {
+    padding-left: 0;
+  }
+  figure {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  figure img {
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
+.zoro{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bold;
+  font-size:20px;
+}
+.sanji{
+  
+  background-color: black; 
+  font-family: 'Lato', sans-serif;
+  display:table;
+  text-align: right;
+  padding: 10px;
+  margin:0;
+  position:absolute;
+  top:0;
+  right:0;
+  cursor: pointer;
+}
+.sanji a {
+  color:white;
+  text-decoration:none;
+  margin:0 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.sanji a:hover{
+  color:#66ccff;
+  box-shadow:0 0 10px rgba(102, 204,255, 0.8);
+  animation:glow 1s infiunite alternate;
+}
+@keyframes glow{
+  from{
+    text-shadow:0 0 10px #66ccff, 0 0 20px #66ccff, 0 0 30px #66ccff;
+  }
+  to{
+    text-shadow:0 0 20px #66ccff, 0 0 30px #66ccff, 0 0 40px #66ccff;
+  }
+}
+.luffy{
+  font-weight:bold;
+  font-size:25px;
+  position:absolute;
+  left:200px;
+  top:240px;
+}
+.me{
+  font-weight:bold;
+  font-size:25px;
+  position:absolute;
+  top:270px;
+  left:200px;
+  
+}
+.gomu{
+  position:absolute;
+  left: 200px;
+  font-weight:bold;
+  font-size:30px;
+  top:300px;
+}
+.img{
+  position:absolute;
+  left:999px;
+  top:90px;
+  clip-path: circle();
+}
+.mine{
+  position:absolute;
+  right:999px;
+  top:740px;
+  clip-path: circle();
+}
+.nami{
+
+  text-align: center;
+  font-size: 30px;
+  font-weight:bolder;
+
+}
+.boa{
+  position:absolute;
+  left:670px;
+}
+.edu{
+text-align: center;
+font-weight: bolder;
+font-size: 40px;
+padding-top: 150px;
+padding-bottom: 30px;
+}
+.expertise{
+  text-align:center;
+  font-size: 40px;
+  font-weight:bolder;
+}
+.contact{
+  text-align:center;
+  font-size: 40px;
+  font-weight:bolder;
+}
+.form{font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  padding-left: 500px;
+    padding-right: 500px;
+ 
+  input[type=text], select, teratext{
+width:100%;
+padding:12px;
+border-radius: 4px;
+box-sizing: border-box;
+margin-top: 6px;
+margin-bottom: 16px;
+resize:vertical;
+
+  }
+  input[type=submit]{
+    background-color: #04AA6D;
+   border-radius: 4px;
+    cursor:pointer;
+  }
+  input[type=submit]:hover{
+    background-color: #45a049;
+  }
+  .container{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding:20px;
+    padding-top: 50px;
+  padding-bottom: 50px;
+  }
+}
+.copy{
+  background-color:#3B3C36;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+}
+.html{
+position:absolute;
+bottom:-1580px;
+left:300px;
+cursor: pointer;
+transition: .5s ease;
+}
+
+.html:hover{
+  box-shadow:
+1px 1px #373737,
+2px 2px #373737,
+3px 3px #373737,
+4px 4px #373737,
+5px 5px #373737,
+6px 6px #373737;
+-webkit-transform: translateX(-3px);
+transform: translateX(-3px);
+transition: .5s ease;
+}
+
+.css{
+  position:absolute;
+  bottom:-1580px;
+  left:500px;
+  cursor: pointer;
+  transition: .5s ease;
+}
+.css:hover{
+  box-shadow:
+1px 1px #373737,
+2px 2px #373737,
+3px 3px #373737,
+4px 4px #373737,
+5px 5px #373737,
+6px 6px #373737;
+-webkit-transform: translateX(-3px);
+transform: translateX(-3px);
+transition: .5s ease;
+}
+.c{
+  position:absolute;
+  bottom:-1580px;
+  left:700px;
+  cursor: pointer;
+  transition: .5s ease;
+}
+.c:hover{
+  box-shadow:
+1px 1px #373737,
+2px 2px #373737,
+3px 3px #373737,
+4px 4px #373737,
+5px 5px #373737,
+6px 6px #373737;
+-webkit-transform: translateX(-3px);
+transform: translateX(-3px);
+transition: .5s ease;
+}
+.cp{
+  position:absolute;
+  bottom:-1580px;
+  left:900px;
+  cursor: pointer;
+  transition: .5s ease;
+}.cp:hover{
+  box-shadow:
+1px 1px #373737,
+2px 2px #373737,
+3px 3px #373737,
+4px 4px #373737,
+5px 5px #373737,
+6px 6px #373737;
+-webkit-transform: translateX(-3px);
+transform: translateX(-3px);
+transition: .5s ease;
+}
+.js{
+  position:absolute;
+  bottom:-1580px;
+  left:1100px;
+  transition: .5s ease;
+  cursor: pointer;
+}
+.js:hover{
+  box-shadow:
+1px 1px #373737,
+2px 2px #373737,
+3px 3px #373737,
+4px 4px #373737,
+5px 5px #373737,
+6px 6px #373737;
+-webkit-transform: translateX(-3px);
+transform: translateX(-3px);
+transition: .5s ease;
+}
+.no{
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+
+.download-button {
+  position:absolute;
+  top:390px;
+  left:210px;
+      display: inline-block;
+    padding:10px 20px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 40%; 
+      background-color: #1d7dbd; 
+      color: #fff;
+      transition: background-color 0.3s ease; 
+      cursor: pointer;
+    }
+    .download-button:hover {
+      background-color: #0f09cd;
+    }
+    .fb{
+      padding-left: 700px;
+    }
+    .insta{
+     position:absolute;
+     top:3300px;
+     left:750px;
+    }
+    
+
+
+</style>
+<body>
+  
+  <div class="zoro" > About me.</div>
+  <div class="sanji">
+    <nav>
+      <a href="#home">Home</a>  &nbsp;&nbsp; &nbsp;&nbsp;
+      <a href="#About">About</a>  &nbsp;&nbsp; &nbsp;&nbsp;
+      <a href="#education">Education</a> &nbsp;&nbsp; &nbsp;&nbsp;
+      <a href="#portfolio"> Portfolio</a> &nbsp;&nbsp; &nbsp;&nbsp;
+       <a href="#expertise">Expertise</a> &nbsp;&nbsp; &nbsp;&nbsp;
+       <a href="#contact">Contact</a> &nbsp;&nbsp; &nbsp;&nbsp;
+    </nav>
+  </div>
+  
+  <br><br><br><br><br><br><br><br><br>
+  <div class="luffy">
+    Hello, It's Me<br></div>
+    <div class="gomu">
+    Sewak Dhakal<br></div>
+    <div class="me">
+    And I'm a 
+    <span style="color:rgb(6, 102, 134)">Frontend Developer></span>
+    </div><br><br><br><br><br>
+
+    
+
+    <div class="img">
+    <img src="sewak.jpg" alt="my image" height="500" width="500">
+    </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div>
+      <a href="#" class="download-button">Download CV</a>
+
+    </div>
+    
+  
+    <div class="nami">
+        <span>About</span>
+        <span style="color:rgb(6, 102, 134)">Me</span>
+    </div>
+    <div class="boa">
+        Frontend Developer!<br><p><br>
+            I am Sewak Dhakal. I am persuding BCA course from Mechi Multiple Campus. I am currently in 1st semester, 2080 batch.
+            I like video editing, gaming and playing ooudoor games like cricket. I often also play table tennis.<br>I like stuffs
+             like coding, chilling alone watching series, anime etc.<br>
+          
+         </p>
+    </div>
+
+    <div class="mine">
+      <img src="sewak.jpg" alt="my image" height="400" width="400">
+    </div>
+  
+    
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><p>
+<div class="edu">
+        
+          <span>My</span>
+          <span style="color:#28666e">Education</span></p>
+      
+</div>
+        
+        <section class="articles">
+            <article>
+              <div class="article-wrapper">
+                <figure>
+                  <img src="school.jpg" alt=""/>
+                </figure>
+                <div class="article-body">
+                  <h2>Secondary Level Schooling</h2>
+                  <p>
+                    Completed secondary level of schooling from Srijana Shishu Sadan, a reputed school in Arjundhara with 3.70 GPA.
+                  </p>
+                  <a href="#" class="read-more">
+                    Read more <span class="sr-only">about this is some title</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article>
+          
+              <div class="article-wrapper">
+                <figure>
+                  <img src="+2.jpg" alt=""/>
+                </figure>
+                <div class="article-body">
+                  <h2>Higher Secondary Level Schooling</h2>
+                  <p>
+                  Completed +2 / higher secondary level of schooling from Lxami Mavi in 2079 BS with 3.03 GPA with grade of B+.
+                  </p>
+                  <a href="#" class="read-more">
+                    Read more <span class="sr-only">about this is some title</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article>
+          
+              <div class="article-wrapper">
+                <figure>
+                  <img src="clz.jpg"alt="" />
+                </figure>
+                <div class="article-body">
+                  <h2>Bachelor Level programme</h2>
+                  <p>
+                    Have been learning BCA on Mechi Multiple Campus, a highly reputed TU collage in Jhapa, in 2080 batch, 1st sem.
+                  </p>
+                  <a href="#" class="read-more">
+                    Read more <span class="sr-only">about this is some title</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </section>
+          <br>
+          <p>
+            <br><br><br><br><br><br><br><br><br>
+          <div class="expertise">
+            <span>My</span>
+            <span style="color:#28666e">Expertise</span>
+          </div>
+          </p><br><br><br><br><br>
+          <div class="html">
+      <img src="html.jpg"alt="html" height="100" width="100"/> 
+          </div>
+          <div class="css"> <img src="css.jpg" alt="css" height="100" width="100"/> 
+        </div>  
+        <div class=js><img src="js.png" alt="js" height="100" width="100"/> 
+          </div>
+          <div class="c">
+            <img src="c.jpg" alt="c" height="100" width="100"/> 
+          </div>
+          <div class="cp"><img src="c++.jpg" alt="c++" height="100" width="100"/> 
+          </div>
+              <br><br><br><br><br><br><br><br><br><br>
+                
+
+
+
+
+          <div class="contact">
+            <span>Contact</span>
+            <span style="color:rgb(6, 102, 134)">Me!</span>
+          </div><br><br><br><br>
+
+          </div>
+<div class="form">
+          <div class="container">
+            <label for="name"><span style="color:black" >First Name</span></label>
+            <input type="text" id="fname" name="Firstname" placeholder="Your Name.....">
+            <label for="name"><span style="color:black" >Last Name</span></label>
+            <input type="text" id="lname" name="Last Name" placeholder="Your last name....">
+            <label for="country"><span style="color:black" >Country</span></label>
+            <select id="country" name="Country">
+              <option value="Nepal">Nepal</option>
+              <option value="india">India</option>
+              <option value="USA">USA</option>
+              <option value="China">China</option>
+            </select>
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="Subject" placeholder="Write something....." style="height:200px"></textarea>
+            <input type="submit" value="submit">
+          </div>
+          </div><br><br><br><br><br><br><br><br><br><br>
+        
+          <div class="fb">
+            <a href=" https://www.facebook.com/profile.php?id=100082353020187  " target="_blank">
+            <img src="facebook.png" alt="fb" height="30" width="30"> </a>
+          
+          </div>
+
+          <div class="insta">
+            <a href="https://www.instagram.com/sewak_07_18?igsh=MzEyYzYycm9jdXJt" target="_blank">
+            <img src="instagram.png" alt="insta" height="30" width="30"> </a>
+</div>
+          <br><br><br><br><br> 
+          <div class="no">
+Phone no. : 9807902217<br>
+Email: sew07ak@gmail.Com
+          </div><br><br><br><br>
+         
+          </div><br><br>
+
+        <div class="copy">
+          &copy; copyright by Sewak Dhakal// All Right Reserved
+        </div>
+        
+        
+</body>
+</html>
